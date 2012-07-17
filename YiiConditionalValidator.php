@@ -20,7 +20,7 @@ class YiiConditionalValidator extends CValidator
      * running validation based on a user-entered value.
      * @var bool
      */
-    public $skinOnDependencyError = false;
+    public $skipOnDependencyError = false;
     
     /**
      * Validate the attribute conditionally
@@ -37,7 +37,7 @@ class YiiConditionalValidator extends CValidator
         $errors = $this->validateDependentAttributes($object);
         
         if ($errors) {
-            if ($this->skinOnDependencyError) {
+            if ($this->skipOnDependencyError) {
                 return;
             }
             

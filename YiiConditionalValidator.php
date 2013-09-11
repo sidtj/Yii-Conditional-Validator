@@ -186,11 +186,11 @@ class YiiConditionalValidator extends CValidator
                     $errorsBackup = null;
                     return false;
                 }
-            } else {
-                $object->addErrors($errorsBackup);
-                $errorsBackup = null;
             }
         }
+
+        $object->addErrors($errorsBackup);
+        $errorsBackup = null;
         return true;
     }
 

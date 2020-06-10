@@ -178,7 +178,8 @@ class YiiConditionalValidator extends CValidator
                 $object->clearErrors();
 
                 if (!$discardErrorsAfterCheck) {
-                    $object->addErrors($newErrors);
+                    // Merge new with 'existing' errors to prevent the last error within the same group (if/then) overwrite all others
+                    $object->addErrors(CMap::mergeArray($errorsBackup, $newErrors));
                 }
 
                 if ($returnFalseOnError) {
